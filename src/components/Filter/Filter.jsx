@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import shortid from 'shortid';
 
 // import styles from './Section.module.scss';
 
@@ -8,20 +9,22 @@ class Filter extends Component {
     handleFilterChange = event => {
         const { value } = event.target;
         this.props.onChange(value);
-        // this.setState(prevState => ({
-        //     [name]: value,
-        // }));
     };
+    filterId = shortid.generate();
     render() {
-        const { filter } = this.props;
+        const { filter, title } = this.props;
         return (
-            <input
-                type="text"
-                name="filter"
-                required
-                value={filter}
-                onChange={this.handleFilterChange}
-            />
+            <label htmlFor={this.filterId}>
+                <span>{title}</span>
+                <input
+                    type="text"
+                    name="filter"
+                    required
+                    value={filter}
+                    onChange={this.handleFilterChange}
+                    id={this.filterId}
+                />
+            </label>
         );
     }
 }

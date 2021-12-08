@@ -63,7 +63,7 @@ export default class App extends Component {
                     onDelete={this.deleteContact}
                 />
                 <Filter
-                    title={'Find contactd by name'}
+                    title={'Find contacts by name'}
                     filter={filter}
                     onChange={this.changeFilter}
                 />
