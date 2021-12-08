@@ -1,9 +1,11 @@
 import { Component } from 'react';
 import shortid from 'shortid';
+import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import ContactForm from './components/ContactForm';
 import ContactList from './components/ContactList';
 import Filter from './components/Filter/';
+import { Alert } from 'react-bootstrap';
 
 export default class App extends Component {
     state = {
@@ -58,15 +60,21 @@ export default class App extends Component {
                 <h1>Phonebook</h1>
                 <ContactForm onSubmit={this.addContact} />
                 <h2>Contacts</h2>
-                <ContactList
-                    contacts={filteredContacts}
-                    onDelete={this.deleteContact}
-                />
                 <Filter
                     title={'Find contacts by name'}
                     filter={filter}
                     onChange={this.changeFilter}
                 />
+                {filteredContacts.length ? (
+                    <ContactList
+                        contacts={filteredContacts}
+                        onDelete={this.deleteContact}
+                    />
+                ) : (
+                    <Alert className="Alert" variant="dark">
+                        Nothing found
+                    </Alert>
+                )}
             </div>
         );
     }

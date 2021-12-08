@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import shortid from 'shortid';
-
-// import styles from './Section.module.scss';
+import { Button, Form } from 'react-bootstrap';
+import styles from './ContactForm.module.scss';
 
 class ContactForm extends Component {
-    static propTypes = { title: PropTypes.string };
     state = {
         name: '',
         number: '',
@@ -31,10 +29,10 @@ class ContactForm extends Component {
     render() {
         const { name, number } = this.state;
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label htmlFor={this.nameId}>
+            <Form className={styles.form} onSubmit={this.handleSubmit}>
+                <Form.Label htmlFor={this.nameId}>
                     Name
-                    <input
+                    <Form.Control
                         type="text"
                         name="name"
                         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -44,10 +42,10 @@ class ContactForm extends Component {
                         onChange={this.handleInputChange}
                         id={this.nameId}
                     />
-                </label>
-                <label htmlFor={this.numberId}>
+                </Form.Label>
+                <Form.Label htmlFor={this.numberId}>
                     Number
-                    <input
+                    <Form.Control
                         type="tel"
                         name="number"
                         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -57,9 +55,11 @@ class ContactForm extends Component {
                         onChange={this.handleInputChange}
                         id={this.numberId}
                     />
-                </label>
-                <button type="sumbit">Add contact</button>
-            </form>
+                </Form.Label>
+                <Button variant="outline-dark" type="sumbit">
+                    Add contact
+                </Button>
+            </Form>
         );
     }
 }

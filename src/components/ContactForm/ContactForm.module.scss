@@ -1,9 +1,10 @@
 @import 'styles/base.scss';
 
-.label {
+.form {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     max-width: 400px;
     width: 100%;
-    margin: 0 auto;
+    margin: 0 auto 20px;
 }
