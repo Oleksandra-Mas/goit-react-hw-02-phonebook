@@ -9,6 +9,7 @@ class ContactListItem extends Component {
             name: PropTypes.string.isRequired,
             number: PropTypes.string.isRequired,
         }).isRequired,
+        onDelete: PropTypes.func.isRequired,
     };
     state = {
         name: '',
@@ -17,7 +18,7 @@ class ContactListItem extends Component {
     render() {
         const { contact, onDelete } = this.props;
         return (
-            <li className={styles.item} key={contact.id}>
+            <li className={styles.item}>
                 <p>{contact.name}</p>
                 <a href={'tel:' + contact.number}>{contact.number}</a>
                 <Button

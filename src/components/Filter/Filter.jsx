@@ -9,6 +9,7 @@ class Filter extends Component {
     static propTypes = {
         filter: PropTypes.string.isRequired,
         title: PropTypes.string,
+        onChange: PropTypes.func.isRequired,
     };
     handleFilterChange = event => {
         const { value } = event.target;

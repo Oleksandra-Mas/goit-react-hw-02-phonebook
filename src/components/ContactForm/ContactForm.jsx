@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
 import { Button, Form } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+
 import styles from './ContactForm.module.scss';
 
 class ContactForm extends Component {
     state = {
         name: '',
         number: '',
+    };
+
+    static propTypes = {
+        onSubmit: PropTypes.func.isRequired,
     };
 
     nameId = shortid.generate();
